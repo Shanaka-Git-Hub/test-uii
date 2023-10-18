@@ -8,7 +8,13 @@ import axios from 'axios'
 export default function App() {
 
   const [users,setUsers]=useState([])
-  
+  useEffect(()=>{
+    fetch('https://coconut-heliotrope-microceratops.glitch.me/getUsers')
+    .then(resp=> resp.json())
+    .then(json=>{
+      setUsers(json.msg)
+    })
+  },[])
   const schema = yup.object().shape({
     userName: yup.string().required(),
     password: yup.string().required()
