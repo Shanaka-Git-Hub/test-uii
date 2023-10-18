@@ -16,13 +16,7 @@ export default function App() {
   const { register, handleSubmit, formState: { errors }, reset } = useForm({
     resolver: yupResolver(schema)
   })
-  useEffect(()=>{
-    fetch('https://coconut-heliotrope-microceratops.glitch.me/getUsers')
-    .then(resp=> resp.json())
-    .then(json=>{
-      setUsers(json.msg)
-    })
-  },[])
+  
   const formData = (data) => {
     axios({
       url:'https://coconut-heliotrope-microceratops.glitch.me/insert',
